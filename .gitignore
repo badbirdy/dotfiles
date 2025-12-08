@@ -1,0 +1,14 @@
+# fish
+.config/fish/*
+!.config/fish/config.fish
+
+# mako
+.config/mako/themes/*
+
+# rofi
+.config/rofi/applets
+
+# nvim
+!.config/nvim/lua/config
+!.config/nvim/lua/plugins
+.config/nvim/lua/*

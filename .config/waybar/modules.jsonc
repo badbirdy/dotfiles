@@ -1,0 +1,294 @@
+{
+  "custom/powermenu": {
+    "format": "",
+    "tooltip": false,
+    "menu": "on-click",
+    "menu-file": "~/.config/waybar/power_menu.xml",
+    "menu-actions": {
+      "lock": "$HOME/Scripts/swaylock.sh",
+      "shutdown": "shutdown",
+      "reboot": "reboot",
+      "suspend": "systemctl suspend",
+      "hibernate": "systemctl hibernate",
+    },
+  },
+  "niri/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      // Named workspaces
+      // (you need to configure them in niri)
+      "ghostty": "",
+      "browser": "",
+      "chat": "",
+      "write": "",
+      "code": "",
+      // Icons by state
+      "default": ""
+    }
+  },
+  "niri/window": {
+    "format": "{app_id}",
+    "rewrite": {
+      "(.*) — Firefox.*": " $1",
+      "(.*) - zsh": "> [$1]",
+      "^com.*ghostty": "ghostty"
+    },
+    "max-length": 20
+  },
+  "custom/polycat": {
+    "exec": "/usr/bin/polycat",
+    // "return-type": "json",
+    "on-click": "mpv $HOME/.local/share/sounds/Meow.ogg.mp3",
+    "format": "{}",
+  },
+  "cava": {
+    // "cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
+    "framerate": 30,
+    "autosens": 0,
+    "sensitivity": 10,
+    "bars": 14,
+    "lower_cutoff_freq": 30000,
+    "higher_cutoff_freq": 100000,
+    "hide_on_silence": false,
+    // "format_silent": "quiet",
+    "method": "pulse",
+    "source": "auto",
+    "stereo": true,
+    "reverse": false,
+    "bar_delimiter": 0,
+    "monstercat": false,
+    "waves": false,
+    "noise_reduction": 0.77,
+    "input_delay": 2,
+    "format-icons": [
+      "▁",
+      "▂",
+      "▃"
+      // "▄",
+      // "▅",
+    ],
+    "actions": {
+      "on-click-right": "mode"
+    }
+  },
+  "mpd": {
+    "format": "  {title} {artist} {stateIcon}",
+    "format-disconnected": "Disconnected ",
+    "format-stopped": "Stopped ",
+    "interval": 10,
+    "state-icons": {
+      "playing": "",
+      "paused": ""
+    },
+    "tooltip-format": "MPD (connected)",
+    "tooltip-format-disconnected": "MPD (disconnected)",
+    "on-click": "mpc prev",
+    "on-click-right": "mpc next",
+    "on-click-middle": "mpc toggle",
+  },
+  "tray": {
+    "icon-size": 21,
+    "spacing": 8,
+  },
+  "custom/music": {
+    "format": "  {}",
+    "escape": true,
+    "interval": 5,
+    "tooltip": false,
+    "exec": "playerctl metadata --format='{{title}} {{artist}}'",
+    "on-click": "playerctl previous",
+    "on-click-right": "playerctl next",
+    "on-click-middle": "playerctl play-pause",
+    "max-length": 40
+  },
+  "mpris": {
+    "format": "DEFAULT: {player_icon} {dynamic}",
+    "format-paused": "DEFAULT: {status_icon} <i>{dynamic}</i>",
+    "player-icons": {
+      "default": "▶",
+      "mpv": "🎵"
+    },
+    "status-icons": {
+      "paused": "⏸"
+    },
+    // "ignored-players": ["firefox"]
+  },
+  "custom/weather": {
+    "exec": "${HOME}/.config/waybar/scripts/get_weather.sh",
+    "return-type": "json",
+    "format": "{text}",
+    "tooltip": true,
+    "interval": 3600
+  },
+  "pulseaudio": {
+    // "scroll-step": 1, // %, can be a float
+    "format": "{icon} {volume}%",
+    "format-muted": " ",
+    "format-icons": {
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-click-right": "pavucontrol",
+  },
+  "network": {
+    "interface": "wlp4s0",
+    "format": "{ifname}",
+    "format-disconnected": "",
+    "format-wifi": " ",
+    "format-alt": "  {essid}",
+    "tooltip-format": "{signalStrength}%",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ifname} : {ipaddr}",
+    "tooltip-format-ethernet": "{ifname} : {ipaddr} | Click to Open GUI",
+    "tooltip-format-disconnected": "Disconnected | Click to open GUI",
+    "on-click-right": "nm-connection-editor",
+  },
+  "custom/power": {
+    "tooltip": false,
+    "on-click": "wlogout &",
+    "format": "⏻ "
+  },
+  "battery": {
+    "interval": 30,
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{icon}",
+    "format-icons": [
+      "󰂎",
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ]
+  },
+  "memory": {
+    "internal": 30,
+    "format": " {percentage}%",
+    "format-alt": " swap {swapPercentage}%",
+  },
+  "custom/lock": {
+    "tooltip": false,
+    "on-click": "$HOME/Scripts/swaylock.sh &",
+    "format": " ",
+  },
+  "clock": {
+    "timezone": "Asis/China",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": " {:%d/%m/%Y}",
+    "format": " {:%H:%M}"
+  },
+  //左键循环切换性能模式
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Performance mode:{profile}",
+    "tooltip": true,
+    "format-icons": {
+      "performance": "󱐋",
+      "balanced": "",
+      "power-saver": "",
+    },
+  },
+  "group/tools": {
+    "orientation": "inherit",
+    "transition-duration": 500,
+    "drawer": {
+      "transition-left-to-right": false,
+    },
+    "modules": [
+      "idle_inhibitor",
+      "custom/colorpicker"
+    ]
+  },
+  //获取屏幕颜色colorpicker
+  "custom/colorpicker": {
+    "tooltip": false,
+    "format": "󱏜",
+    "on-click": "hyprpicker | wl-copy",
+  },
+  //禁止熄屏
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": "",
+    },
+    "tooltip-format-activated": "idle Enabled",
+    "tooltip-format-deactivated": "idle Disabled",
+  },
+  "custom/mako": {
+    "format": "",
+    "on-click": "makoctl restore",
+  },
+  // 调节内置屏幕亮度
+  "backlight/slider": {
+    "min": 5,
+    "max": 100,
+    "orientation": "horizontal",
+  },
+  "backlight": {
+    "device": "amdgpu_bl1",
+    "format": "{icon} {percent}%",
+    "format-alt": "{icon}",
+    "tooltip": false,
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  //调节外接屏幕亮度
+  "group/ddcutil": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-left-to-right": false,
+    },
+    "modules": [
+      "custom/ddcutil-day",
+      "backlight/slider",
+      "backlight",
+      "custom/separator#1",
+      "custom/ddcutil-sleep",
+      "custom/ddcutil-night",
+    ],
+  },
+  "custom/ddcutil-day": {
+    "tooltip-format": "Ex.Monitor 100% brightness",
+    "format": "󰃠",
+    "on-click": "ddcutil --display 1 setvcp 10 100 ",
+  },
+  "custom/ddcutil-night": {
+    "tooltip-format": "Ex.Monitor 65% brightness",
+    "format": "󰃟",
+    "on-click": "ddcutil --display 1 setvcp 10 65 ",
+  },
+  "custom/ddcutil-sleep": {
+    "tooltip-format": "Ex.Monitor 5% brightness",
+    "format": "󰃞",
+    "on-click": "ddcutil --display 1 setvcp 10 5 ",
+  },
+  //分隔符󰇝 󱋱
+  "custom/separator#1": {
+    "format": "󱋱",
+    "tooltip": false,
+  },
+}

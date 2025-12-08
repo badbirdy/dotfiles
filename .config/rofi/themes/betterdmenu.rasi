@@ -1,0 +1,67 @@
+* {
+    background-color: #1e1e2e;
+    text-color:       #cdd6f4;
+    border-color:     #585b70;
+    font: "JetBrains Mono 12";
+    border-radius: 6px;
+}
+
+window {
+    anchor: north;
+    location: north;
+    width: 100%;
+    padding: 8px;
+    children: [ horibox ];
+    background-color: @background-color;
+    border: 0;
+}
+
+horibox {
+    orientation: horizontal;
+    spacing: 8px;
+    children: [ prompt, entry, listview ];
+}
+
+prompt {
+    text-color: #89b4fa; /* 柔和蓝色强调 */
+    padding: 0px 8px;
+}
+
+entry {
+    expand: false;
+    width: 14em;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: #313244;
+    text-color: @text-color;
+}
+
+listview {
+    // layout: horizontal;
+    spacing: 8px;
+    lines: 8;
+    fixed-height: false;
+    scrollbar: true;
+    border: 1px solid; 
+    border-color: @border-color;
+    border-radius: 6px;
+    padding: 6px;
+    background-color: #24273a;
+}
+
+element {
+    padding: 4px 10px;
+    border-radius: 4px;
+    background-color: transparent;
+    text-color: @text-color;
+}
+
+element selected {
+    background-color: #89b4fa; /* 柔和蓝选中 */
+    text-color: #1e1e2e;       /* 深底浅字 */
+}
+
+element-text, element-icon {
+    background-color: inherit;
+    text-color: inherit;
+}

@@ -1,0 +1,633 @@
+@import "macchiato.css";
+
+* {
+  font-family: "CaskaydiaCove Nerd Font", "Font Awesome 6 Free", "LXGW WenKai Mono GB Screen", "polycat";
+  /* font-family: "Noto Sans CJK SC", "UbuntuMono Nerd Font", "polycat"; */
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+#waybar {
+  /* background: transparent; */
+  /* color: @text; */
+  border-radius: 12px;
+  /* opacity: 0.5; */
+}
+/* window#waybar { */
+/*     background-color: rgba(43, 48, 59, 0.5); */
+/*     border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
+/*     color: #ffffff; */
+/*     transition-property: background-color; */
+/*     transition-duration: .5s; */
+/* } */
+
+/**/
+
+#cava {
+  margin-top: 5px;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  transition: none;
+  background: #292c3c;
+  color: #FB9FE3;
+  transition: 0.3s;
+}
+
+#cava:hover {
+  color: #292c3c;
+  background: #FB9FE3;
+}
+
+
+
+#tray {
+  margin-top: 5px;
+  margin-left: 8px;
+  margin-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 8px;
+  background-color: #292c3c;
+  /* background: #FFFFFF; */
+  /* color: @text; */
+  border-bottom: 3px;
+  border-style: solid;
+  border-color: @blue;
+}
+
+#custom-weather {
+    /* font-family: "JetBrainsMono Nerd Font", "Noto Sans Symbols2"; */
+    margin-top: 5px;
+    margin-left: 8px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: none;
+    background: #292c3c;
+    color: @maroon;
+    padding: 8px;
+    border-bottom: 3px;
+    border-style: solid;
+    border-color: @maroon;
+    transition: 0.3s;
+}
+
+#custom-weather.weather-hot {
+    color: #f7768e;
+    border-color: #f7768e;
+}
+#custom-weather.weather-hot:hover {
+  background: #f7768e;
+  color: #292c3c;
+}
+
+#custom-weather.weather-cold {
+    color: #7dcfff;
+    border-color: #7dcfff;
+}
+#custom-weather.weather-cold:hover {
+  background: #7dcfff;
+  color: #292c3c;
+}
+
+#custom-weather.weather-normal {
+    color: @lavender;
+    border-color: @lavender;
+}
+#custom-weather.weather-normal:hover {
+  background: @lavender;
+  color: #292c3c;
+}
+
+#custom-weather.weather-error {
+    color: @red;
+    border-color: @red;
+}
+#custom-weather.weather-error:hover {
+    background: @red;
+    color: #292c3c;
+}
+
+#pulseaudio {
+  margin-top: 5px;
+  margin-left: 8px;
+  margin-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  transition: none;
+  background: #292c3c;
+  color: @yellow;
+  padding: 8px;
+  border-bottom: 3px;
+  border-style: solid;
+  border-color: @yellow;
+  transition: 0.3s;
+}
+
+#pulseaudio:hover {
+  background: @yellow;
+  color: #292c3c;
+}
+
+#pulseaudio.muted {
+  color: @red;
+  background: #292c3c;
+  border-bottom: 3px;
+  border-style: solid;
+  border-color: @red;
+  transition: 0.3s;
+}
+
+#pulseaudio.muted:hover {
+  background: @red;
+  color: #292c3c;
+}
+
+#network {
+  margin-top: 5px;
+  margin-left: 8px;
+  margin-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  transition: none;
+  background: #292c3c;
+  color: @teal;
+  border-bottom: 3px;
+  border-style: solid;
+  border-color: @teal;
+  transition: 0.3s;
+}
+
+#network:hover {
+  color: #292c3c;
+  background: @teal;
+}
+
+#network.disconnected {
+  color: @red;
+  background: #292c3c;
+  border-bottom: 3px;
+  border-style: solid;
+  border-color: @red;
+}
+
+#network.disconnected:hover {
+  background: @red;
+  color: #292c3c;
+}
+
+#backlight {
+  margin-top: 5px;
+  margin-left: 8px;
+  margin-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  transition: none;
+  background: #292c3c;
+  color: @lavender;
+  border-bottom: 3px;
+  border-style: solid;
+  border-color: @lavender;
+  transition: 0.3s;
+}
+
+#backlight:hover {
+  color: #292c3c;
+  background: @lavender;
+}
+
+#custom-ddcutil-day {
+  margin-top: 10px;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  transition: none;
+  background: #292c3c;
+  color: @green;
+  border-bottom: 3px;
+  border-style: solid;
+  border-color: @green;
+  transition: 0.3s;
+}
+#custom-ddcutil-night {
+  margin-top: 10px;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  transition: none;
+  background: #292c3c;
+  color: @green;
+  border-bottom: 3px;
+  border-style: solid;
+  border-color: @green;
+  transition: 0.3s;
+}
+#custom-ddcutil-sleep {
+  margin-top: 10px;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  transition: none;
+  background: #292c3c;
+  color: @green;
+  border-bottom: 3px;
+  border-style: solid;
+  border-color: @green;
+  transition: 0.3s;
+
+}
+#custom-separator.1 {
+    background-color: @surface_container_high;
+    color: @secondary;
+    padding: 0px 5px;
+}
+
+#backlight-slider {
+  margin-top: 10px;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  transition: none;
+  background: #292c3c;
+  color: @green;
+  border-bottom: 3px;
+  border-style: solid;
+  border-color: @green;
+  transition: 0.3s;
+  background-color: @surface_container_high;
+  padding: 0px 5px 0px 0px;
+}
+
+#backlight-slider slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+    background: none;
+}
+
+#backlight-slider trough {
+    min-height: 10px;
+    min-width: 80px;
+    border-radius: 5px;
+    opacity: 0;
+    background-color: @background;
+}
+
+#backlight-slider highlight {
+    min-width: 10px;
+    border-radius: 5px;
+    background-color: @inverse_primary;
+}
+#battery {
+  margin-top: 5px;
+  margin-left: 8px;
+  margin-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  transition: none;
+  background: #292c3c;
+  color: @green;
+  border-bottom: 3px;
+  border-style: solid;
+  border-color: @green;
+  transition: 0.3s;
+}
+
+#battery:hover {
+  color: #292c3c;
+  background: @green;
+}
+
+#battery.charging {
+  color: @green;
+}
+
+#battery.warning:not(.charging) {
+  color: @red;
+}
+
+#memory {
+  margin-top: 5px;
+  margin-left: 8px;
+  margin-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  transition: none;
+  background: #292c3c;
+  color: @rosewater;
+  border-bottom: 3px;
+  border-style: solid;
+  border-color: @rosewater;
+  transition: 0.3s;
+}
+
+#memory:hover {
+  color: #292c3c;
+  background: @rosewater;
+}
+
+#custom-lock {
+  font-size: 15px;
+  margin-top: 5px;
+  margin-left: 8px;
+  margin-right: 17px;
+  margin-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 5px;
+  border-radius: 10px;
+  transition: none;
+  background: #292c3c;
+  color: #89b4fa;
+  border-bottom: 3px;
+  border-style: solid;
+  border-color: #89b4fa;
+  transition: 0.3s;
+}
+
+#custom-lock:hover {
+  background: #f38ba8;
+  color: #292c3c;
+  border-color: #f38ba8;
+}
+
+#clock {
+  margin-top: 5px;
+  margin-left: 8px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  transition: none;
+  background: #292c3c;
+  color: @pink;
+  border-bottom: 3px;
+  border-style: solid;
+  border-color: @pink;
+  transition: 0.3s;
+}
+
+#clock:hover {
+  color: #292c3c;
+  background: @pink;
+}
+
+#disk {
+  margin-top: 10px;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  transition: none;
+  background: #292c3c;
+  color: #89b4fa;
+  border-bottom: 3px;
+  border-style: solid;
+  border-color: #89b4fa;
+  transition: 0.3s;
+}
+
+#disk:hover {
+  color: #292c3c;
+  background: #89b4fa;
+}
+
+#privacy {
+  margin-top: 10px;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  transition: none;
+  background: #292c3c;
+  color: #89b4fa;
+  border-bottom: 3px;
+  border-style: solid;
+  border-color: #89b4fa;
+  transition: 0.3s;
+}
+
+#custom-colorpicker {
+  margin-top: 5px;
+  margin-left: 8px;
+  margin-right: 1px;
+  margin-bottom: 5px;
+  padding-left: 8px;
+  padding-right: 12px;
+  border-radius: 10px;
+  transition: none;
+  background: #292c3c;
+  color: @green;
+  border-bottom: 3px;
+  border-style: solid;
+  border-color: @green;
+  transition: 0.3s;
+}
+
+#idle_inhibitor {
+  margin-top: 5px;
+  margin-left: 8px;
+  margin-bottom: 5px;
+  padding-left: 8px;
+  padding-right: 15px;
+  border-radius: 10px;
+  transition: none;
+  background: #292c3c;
+  color: @green;
+  border-bottom: 3px;
+  border-style: solid;
+  border-color: @green;
+  transition: 0.3s;
+}
+
+#idle_inhibitor.activated {
+  color: @green;
+  border-color: @green;
+}
+
+#idle_inhibitor.activated:hover {
+  background: @green;
+  color: #292c3c;
+  border-color: @green;
+}
+
+#idle_inhibitor.deactivated {
+  color: @green
+}
+
+#idle_inhibitor.deactivated:hover {
+  color: #292c3c;
+  background: @green;
+}
+
+#cpu {
+  margin-top: 10px;
+  margin-left: 8px;
+  margin-bottom: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  transition: none;
+  background: #292c3c;
+  color: #89b4fa;
+  border-bottom: 3px;
+  border-style: solid;
+  border-color: #89b4fa;
+  transition: 0.3s;
+}
+
+#cpu:hover {
+  color: #292c3c;
+  background: #89b4fa;
+
+}
+
+#custom-powermenu {
+  font-size: 20px;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  padding-left: 8px;
+  padding-right: 14px;
+  border-radius: 10px;
+  transition: none;
+  color: #89b4fa;
+  border-bottom: 3px;
+  border-style: solid;
+  border-color: #89b4fa;
+  background: @base;
+  transition: 0.3s;
+}
+
+#custom-powermenu:hover {
+  background: #89b4fa;
+  color: #292c3c;
+}
+
+#menuitem {
+  border-radius: 10px;
+}
+
+#workspaces {
+  font-family: "FiraCode Nerd Font Mono";
+  margin-top: 5px;
+  margin-left: 8px;
+  margin-bottom: 5px;
+  padding-right: 4px;
+  background: #292c3c;
+  border-bottom: 3px;
+  border-style: solid;
+  border-color: @blue;
+  color: #89b4fa;
+  transition: 0.3s;
+}
+
+#workspaces button {
+  color: #a0aec0;
+  transition: 0.3s;
+}
+/**/
+/* #workspaces button:hover { */
+/*   background: transparent; */
+/*   color: transparent; */
+/* } */
+
+/* 鼠标悬停效果 */
+#workspaces button:hover {
+    color: #ffffff;      /* 悬停变白 */
+}
+
+#workspaces button.active {
+  color: #89b4fa;
+  transition: 0.3s;
+}
+
+#window {
+  font-weight: 500;
+  font-style: italic;
+  margin-top: 5px;
+  margin-left: 8px;
+  margin-bottom: 5px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background: @base;
+  border-bottom: 3px;
+  border-style: solid;
+  border-color: @blue;
+  color: @blue;
+  transition: 0.3s;
+}
+
+#window:hover {
+  background: @blue;
+  color: #292c3c;
+}
+
+#custom-music {
+  font-family: "CaskaydiaCove Nerd Font","LXGW WenKai Mono GB Screen";
+  font-weight: bold;
+  margin-top: 5px;
+  margin-left: 8px;
+  margin-bottom: 5px;
+  padding-top: 3px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background: #292c3c;
+  border-bottom: 3px;
+  border-style: solid;
+  border-color: #A9A7F0;
+  color: #A9A7F0;
+  transition: 0.3s;
+}
+
+#custom-music:hover {
+  /* background: rgb(137,180,250); */
+  background: radial-gradient(circle, rgba(137,180,250,120) 0%, rgba(142,179,250,120) 6%, rgba(148,226,213,1) 14%, rgba(147,178,250,1) 14%, rgba(155,176,249,1) 18%, rgba(245,194,231,1) 28%, rgba(158,175,249,1) 28%, rgba(181,170,248,1) 58%, rgba(205,214,244,1) 69%, rgba(186,169,248,1) 69%, rgba(195,167,247,1) 72%, rgba(137,220,235,1) 73%, rgba(198,167,247,1) 78%, rgba(203,166,247,1) 100%); 
+  background-size: 400% 400%;
+  animation: gradient_f 9s cubic-bezier(.72,.39,.21,1) infinite; 
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
+  font-weight: bold;
+  color: #fff ;
+}
+
+#custom-polycat {
+  font-size: 30px;
+  margin-top: 5px;
+  margin-left: 8px;
+  margin-bottom: 5px;
+  padding-left: 6px;
+  padding-right: 4px;
+  background: #292c3c;
+  border-bottom: 3px;
+  border-style: solid;
+  border-color: @pink;
+  color: #FFB6C1;
+  transition: 0.3s;
+}
+
+#custom-polycat:hover {
+  background: #FFB6C1;
+  color: #292c3c;
+}

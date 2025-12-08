@@ -1,0 +1,50 @@
+# zathurarc
+# @author nate zhou
+# @since 2023,2024,2025
+
+set font 'SourceCodePro normal 11'
+set guioptions 'sv'
+set selection-clipboard clipboard
+set selection-notification false
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+set statusbar-home-tilde true
+set statusbar-page-percent true
+set page-padding 1
+set database 'sqlite'
+set zoom-step 2
+set scroll-step 30
+set scroll-hstep 10
+set recolor true
+set recolor-keephue true
+set recolor-reverse-video true
+set statusbar-basename
+set adjust-open width
+
+#set default-bg rgba(17,17,17,0.9)
+#set recolor-lightcolor rgba(17,17,17,0)
+# set default-bg "#282A2E"
+set default-bg "#1E1E1E"
+set recolor-lightcolor "#1E1E1E"
+set recolor-darkcolor "#F8F8F2"  # 亮模式背景
+set statusbar-bg "#7AA2F7"
+set highlight-fg '#7AA2F7'
+# 输入框背景色
+set inputbar-bg "#111111"
+
+# 输入框文字颜色
+set inputbar-fg "#5ccfe6"
+
+set highlight-active-color rgba(178,34,34,0.5)
+set highlight-color rgba(243,139,168,0.5)
+
+map I recolor
+map d scroll half-down
+map u scroll half-up
+map D toggle_page_mode
+map P print
+map i zoom in
+map o zoom out
+map b toggle_statusbar
+
+map w adjust_window width
