@@ -9,6 +9,6 @@
 .config/rofi/applets
 
 # nvim
+.config/nvim/lua/*
 !.config/nvim/lua/config
 !.config/nvim/lua/plugins
-.config/nvim/lua/*
