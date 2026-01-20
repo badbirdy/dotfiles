@@ -4,3 +4,13 @@ modmap:
       # CapsLock/Ctrl_L -> Esc
       CapsLock: Esc
       Esc: CapsLock
+
+keymap:
+  - name: obsidian (modified from Default)
+    application:
+      only: obsidian
+    remap:
+      # C-b: left  # for Vim
+      # C-f: right # for Vim
+      C-k: up
+      C-j: down

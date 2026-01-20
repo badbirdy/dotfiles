@@ -78,6 +78,9 @@ if status is-interactive
             thefuck $history[1] | source
         end
     end
+    if type -q starship
+        starship init fish | source
+    end
 end
 
 set -Ux EDITOR nvim

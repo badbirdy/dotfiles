@@ -20,6 +20,7 @@ window-rule {
 window-rule {
     match app-id=r#"(?i).*qq.*|.*telegram.*|.*wechat.*|.*music.*|.*prismlauncher.*"#
     open-on-workspace "chat"
+    open-focused true
 }
 window-rule {
     match app-id=r#"(?i).*siyuan.*|.*okular.*|.*wps.*"#
@@ -66,8 +67,8 @@ input {
         // drag false
         // drag-lock
         natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
+        accel-speed 0.4
+        accel-profile "adaptive"
         // scroll-method "two-finger"
         // disabled-on-external-mouse
     }
@@ -119,7 +120,7 @@ cursor {
 // You makd me laugh, read the last line(now the last but one), OK?
 output "eDP-2" {
     // Uncomment this line to disable this output.
-    off
+    // off
 
     // Resolution and, optionally, refresh rate of the output.
     // The format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
@@ -127,7 +128,7 @@ output "eDP-2" {
     // for the resolution.
     // If the mode is omitted altogether or is invalid, niri will pick one automatically.
     // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    mode "1920x1080@120.030"
+    mode "1920x1080@144.000"
 
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
     // scale 1.33333
@@ -149,7 +150,7 @@ output "eDP-2" {
     position x=1280 y=0
 }
 
-output "HDMI-A-1" {
+output "DP-1" {
     // Uncomment this line to disable this output.
     // off
 
@@ -159,7 +160,7 @@ output "HDMI-A-1" {
     // for the resolution.
     // If the mode is omitted altogether or is invalid, niri will pick one automatically.
     // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    mode "1920x1080@240.001"
+    mode "2560x1440@250.00"
 
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
     scale 1
@@ -343,18 +344,17 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 // spawn-at-startup "waybar"
 // spawn-sh-at-startup "dunst &"
-// spawn-at-startup "mako"
+spawn-at-startup "mako"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "niriswitcher"
 // spawn-at-startup "niri-switch-daemon"
-// spawn-at-startup "gammastep-indicator"
+spawn-at-startup "gammastep-indicator"
 spawn-at-startup "kdeconnectd"
 spawn-at-startup "kdeconnect-indicator"
 spawn-at-startup "fcitx5"
 // spawn-at-startup "clipcatd"
 spawn-at-startup  "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-sh-at-startup  "gnome-keyring-daemon --start --components=secrets"
-spawn-at-startup "niri-switch-daemon"
 // spawn-sh-at-startup  "$HOME/Scripts/wallpaperloop.sh"
 spawn-at-startup "swww-daemon"
 // cliphist
@@ -453,8 +453,20 @@ recent-windows {
 window-rule {
     match app-id=r#"QQ|satty|dolphin|org.pulseaudio.pavucontrol|anki|ark|blueman-manager|waypaper|nm-connection-editor|org.gnome.Nautilus"#
     open-floating true
-    default-column-width { fixed 1157; }
-    default-window-height { fixed 736; }
+    // default-column-width { fixed 1157; }
+    // default-window-height { fixed 736; }
+}
+
+window-rule {
+  match app-id=r#".prismlauncher."#
+  match title=r#".控制台窗口."#
+  open-floating true
+}
+
+window-rule {
+  match app-id=r#".kdeconnect.daemon$"#
+  match title=r#"^sending.kde connect daemon$"#
+  open-floating true
 }
 
 window-rule {
@@ -465,7 +477,7 @@ window-rule {
 }
 // --------- maximized windows -----------
 window-rule {
-    match app-id=r#"firefox-nightly|neovide|Code|SiYuan|clash-verge|org.telegram.desktop|org.kde.kdeconnect.app|^jetbrains|com.obsproject.Studio"#
+    match app-id=r#"firefox-nightly|neovide|code|SiYuan|clash-verge|org.telegram.desktop|org.kde.kdeconnect.app|^jetbrains|com.obsproject.Studio|google-chrome"#
     open-maximized true
 }
 
@@ -474,8 +486,12 @@ window-rule {
     // This app-id regular expression will work for both:
     // - host Firefox (app-id is "firefox")
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id=r#"^firefox."# title="^Picture-in-Picture$"
     open-floating true
+    open-focused false
+    default-column-width { fixed 759; }
+    default-window-height { fixed 427; }
+    default-floating-position x=100 y=100 relative-to="bottom-left"
 }
 
 window-rule {
@@ -513,10 +529,15 @@ window-rule {
 }
 
 window-rule {
-    match app-id="com.mitchellh.ghostty"
+    match app-id="com.mitchellh.ghostty" is-active=true
+    // match is-focused=true
     geometry-corner-radius 10
     clip-to-geometry true
-    opacity 1.0
+    opacity 0.95
+    shadow {
+      on
+      color "#87CEEB70"
+    }
 }
 
 binds {
@@ -696,6 +717,7 @@ binds {
     Mod+3 { focus-workspace "code"; }
     Mod+4 { focus-workspace "write"; }
     Mod+q { focus-workspace "chat"; }
+    Mod+5 { focus-workspace 5; }
     Mod+6 { focus-workspace 6; }
     Mod+7 { focus-workspace 7; }
     Mod+8 { focus-workspace 8; }
@@ -713,7 +735,7 @@ binds {
     Mod+Shift+2 { move-window-to-workspace "ghostty"; }
     Mod+Shift+3 { move-window-to-workspace "code"; }
     Mod+Shift+4 { move-window-to-workspace "write"; }
-    Mod+Shift+5 { move-window-to-workspace "chat"; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
     Mod+Shift+6 { move-window-to-workspace 6; }
     Mod+Shift+7 { move-window-to-workspace 7; }
     Mod+Shift+8 { move-window-to-workspace 8; }

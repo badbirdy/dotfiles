@@ -439,10 +439,10 @@
   border-radius: 10px;
   transition: none;
   background: #292c3c;
-  color: @green;
+  color: @subtext0;
   border-bottom: 3px;
   border-style: solid;
-  border-color: @green;
+  border-color: @subtext0;
   transition: 0.3s;
 }
 
@@ -455,31 +455,31 @@
   border-radius: 10px;
   transition: none;
   background: #292c3c;
-  color: @green;
+  color: @subtext0;
   border-bottom: 3px;
   border-style: solid;
-  border-color: @green;
+  border-color: @subtext0;
   transition: 0.3s;
 }
 
 #idle_inhibitor.activated {
-  color: @green;
-  border-color: @green;
+  color: @subtext0;
+  border-color: @subtext0;
 }
 
 #idle_inhibitor.activated:hover {
-  background: @green;
+  background: @subtext0;
   color: #292c3c;
-  border-color: @green;
+  border-color: @subtext0;
 }
 
 #idle_inhibitor.deactivated {
-  color: @green
+  color: @subtext0
 }
 
 #idle_inhibitor.deactivated:hover {
   color: #292c3c;
-  background: @green;
+  background: @subtext0;
 }
 
 #cpu {

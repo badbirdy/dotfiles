@@ -99,7 +99,7 @@
     "on-click": "playerctl previous",
     "on-click-right": "playerctl next",
     "on-click-middle": "playerctl play-pause",
-    "max-length": 40
+    "max-length": 50
   },
   "mpris": {
     "format": "DEFAULT: {player_icon} {dynamic}",
