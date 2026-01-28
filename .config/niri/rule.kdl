@@ -1,0 +1,174 @@
+// Window rules let you adjust behavior for individual windows.
+// Find more information on the wiki:
+// https://yalter.github.io/niri/Configuration:-Window-Rules
+
+// Work around WezTerm's initial configure bug
+// by setting an empty default-column-width.
+
+// Example: enable rounded corners for all windows.
+// (This example rule is commented out with a "/-" in front.)
+
+// 放进overview里的壁纸程序
+layer-rule{
+    match namespace="hyprpaper"
+    match namespace="wallpaper"
+    match namespace="awww-daemon"
+    match namespace="swww-daemonoverview"
+    place-within-backdrop true
+}
+
+window-rule {
+    geometry-corner-radius 5
+    // 去除超出圆角的窗口内容
+    clip-to-geometry true
+    // 禁止边框画到背景里
+    draw-border-with-background false
+    opacity 0.98
+}
+
+// 多任务预览
+recent-windows {
+    // off
+    debounce-ms 750
+
+    open-delay-ms 150
+
+    highlight {
+        active-color "#87CEEEff"
+        urgent-color "#D81E06"
+        // urgent-color "#ff9999ff"
+        padding 5
+        corner-radius 3
+    }
+
+    previews {
+        max-height 580
+        max-scale 0.5
+    }
+
+    binds {
+        Alt+Tab         { next-window; }
+        Alt+Shift+Tab   { previous-window; }
+        Alt+grave       { next-window     filter="app-id"; }
+        Alt+Shift+grave { previous-window filter="app-id"; }
+
+        // Mod+Tab         { next-window; }
+        // Mod+Shift+Tab   { previous-window; }
+        // Mod+grave       { next-window     filter="app-id"; }
+        // Mod+Shift+grave { previous-window filter="app-id"; }
+    }
+}
+
+// --------- floating windows -----------
+window-rule {
+    match app-id=r#"satty|dolphin|org.pulseaudio.pavucontrol|anki|ark|blueman-manager|waypaper|nm-connection-editor|org.gnome.Nautilus"#
+    open-floating true
+    // default-column-width { fixed 1157; }
+    // default-window-height { fixed 736; }
+}
+
+window-rule {
+  match app-id=r#".prismlauncher."#
+  match title=r#".控制台窗口."#
+  open-floating true
+}
+
+window-rule {
+  match app-id=r#".kdeconnect.daemon$"#
+  match title=r#"^sending.kde connect daemon$"#
+  open-floating true
+}
+
+window-rule {
+    match app-id=r#"waypaper"#
+    open-floating true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 800; }
+}
+// --------- maximized windows -----------
+window-rule {
+    match app-id=r#"firefox-nightly|neovide|code|SiYuan|clash-verge|org.telegram.desktop|org.kde.kdeconnect.app|^jetbrains|com.obsproject.Studio|google-chrome"#
+    open-maximized true
+}
+
+// Open the Firefox picture-in-picture player as floating by default.
+window-rule {
+    // This app-id regular expression will work for both:
+    // - host Firefox (app-id is "firefox")
+    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
+    match app-id=r#"^firefox."# title="^Picture-in-Picture$"
+    open-floating true
+    open-focused false
+    default-column-width { fixed 759; }
+    default-window-height { fixed 427; }
+    default-floating-position x=100 y=100 relative-to="bottom-left"
+}
+
+window-rule {
+    // This app-id regular expression will work for both:
+    // - host Firefox (app-id is "firefox")
+    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
+    match title="媒体查看器"
+    open-floating true
+}
+
+// Example: block out two password managers from screen capture.
+// (This example rule is commented out with a "/-" in front.)
+window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+    // match app-id=r#"firefox-nightly"#
+    match app-id=r#"QQ"#
+
+    block-out-from "screen-capture"
+
+    // Use this instead if you want them visible on third-party screenshot tools.
+    // block-out-from "screencast"
+}
+
+window-rule {
+    match app-id="Xdg-desktop-portal-gtk" 
+    open-floating true
+    border {
+      off
+    }
+    geometry-corner-radius 5
+    clip-to-geometry false
+    default-column-width { fixed 1157; }
+    default-window-height { fixed 736; }
+}
+
+window-rule {
+    match app-id="com.mitchellh.ghostty" is-active=true
+    // match is-focused=true
+    geometry-corner-radius 10
+    clip-to-geometry true
+    opacity 0.95
+    shadow {
+      on
+      color "#87CEEB70"
+    }
+}
+
+window-rule {
+    match app-id=r#"firefox-nightly"#
+    open-on-workspace "browser"
+}
+window-rule {
+    match title=r#".*tmm.*"#
+    open-on-workspace "ghostty"
+}
+window-rule {
+    match app-id=r#"(?i)Code|.*neovide.*"#
+    open-on-workspace "code"
+}
+window-rule {
+    match app-id=r#"(?i).*qq.*|.*telegram.*|.*wechat.*|.*music.*|.*prismlauncher.*"#
+    open-on-workspace "chat"
+    open-focused true
+}
+window-rule {
+    match app-id=r#"(?i).*siyuan.*|.*okular.*|.*wps.*"#
+    open-on-workspace "write"
+    open-maximized true
+}
