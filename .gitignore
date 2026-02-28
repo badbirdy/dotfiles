@@ -12,3 +12,8 @@
 .config/nvim/lua/*
 !.config/nvim/lua/config
 !.config/nvim/lua/plugins
+
+# yazi
+.config/yazi/flavors/*
+.config/yazi/plugins/*
+/.config/yazi/package.toml
