@@ -204,12 +204,13 @@
   },
   "group/tools": {
     "orientation": "inherit",
-    "transition-duration": 500,
+    "transition-duration": 300,
     "drawer": {
-      "transition-left-to-right": false,
+      "transition-right-to-left": false,
     },
     "modules": [
       "idle_inhibitor",
+      "custom/wfrec",
       "custom/colorpicker"
     ]
   },
@@ -218,6 +219,17 @@
     "tooltip": false,
     "format": "󱏜",
     "on-click": "hyprpicker | wl-copy",
+  },
+  //wf-recorder
+  "custom/wfrec": {
+    "exec": "~/.config/waybar/scripts/wf-recorder.sh status-json",
+    "return-type": "json",
+    "format": "",
+    //"interval": 1,                 // 每秒刷新一次
+    "signal": 9, // 与脚本里的 WAYBAR_SIG 对应
+    "tooltip": true,
+    "on-click": "~/.config/waybar/scripts/wf-recorder.sh toggle", // 左键：开始/停止
+    "on-click-right": "~/.config/waybar/scripts/wf-recorder.sh stop"
   },
   //禁止熄屏
   "idle_inhibitor": {

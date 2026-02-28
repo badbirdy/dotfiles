@@ -12,14 +12,15 @@
     "custom/powermenu",
     "niri/workspaces",
     "niri/window",
-    "custom/polycat"
-    // "cava"
+    "custom/polycat",
+    // "cava",
+    "group/tools",
   ],
   "modules-center": [
     "custom/music"
   ],
   "modules-right": [
-    "group/tools",
+    // "group/tools",
     "tray",
     "custom/weather",
     "pulseaudio",

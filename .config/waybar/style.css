@@ -446,6 +446,23 @@
   transition: 0.3s;
 }
 
+#custom-wfrec {
+  margin-top: 5px;
+  margin-left: 8px;
+  margin-right: 1px;
+  margin-bottom: 5px;
+  padding-left: 8px;
+  padding-right: 12px;
+  border-radius: 10px;
+  transition: none;
+  background: #292c3c;
+  color: @subtext0;
+  border-bottom: 3px;
+  border-style: solid;
+  border-color: @subtext0;
+  transition: 0.3s;
+}
+
 #idle_inhibitor {
   margin-top: 5px;
   margin-left: 8px;
