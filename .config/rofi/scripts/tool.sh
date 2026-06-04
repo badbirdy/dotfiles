@@ -18,10 +18,12 @@ useful_tools_items[1]='update polybar'
 useful_tools_items[2]='update waybar'
 useful_tools_items[3]='set wallpaper'
 useful_tools_items[4]=' speed test'
+useful_tools_items[5]='Waybar modules'
 useful_tools_cmds[1]="$HOME/.config/polybar/launch.sh > /dev/null 2>&1"
 useful_tools_cmds[2]="$HOME/Scripts/restartwaybar.sh > /dev/null 2>&1"
 useful_tools_cmds[3]="coproc $HOME/Scripts/wallpaperloop.sh; show_useful_tools_menu"
 useful_tools_cmds[4]="coproc $HOME/Scripts/speedtest.sh"
+useful_tools_cmds[5]='show_waybar_modules_menu'
 
 ##### TOGGLE_SERVER_MENU #####
 # toggle_server_menu_items[1]=' open v2raya'
@@ -67,6 +69,24 @@ show_useful_tools_menu() {
   done
 }
 
+show_waybar_modules_menu() {
+  echo -en "\0new-selection\x1ftrue\n"
+  echo -e "\0prompt\x1fwaybar\n"
+  echo -en "\0data\x1fWAYBAR_MODULES_MENU\n"
+
+  "$HOME/.config/waybar/scripts/toggle-module.sh" list | while IFS=$'\t' read -r state module; do
+    [ "$state" = "active" ] && icon='󰄲' || icon='󰄱'
+    echo "$icon $module"
+  done
+}
+
+toggle_waybar_module() {
+  module=${1#* }
+  "$HOME/.config/waybar/scripts/toggle-module.sh" toggle "$module" > /dev/null
+  "$HOME/Scripts/restartwaybar.sh" > /dev/null 2>&1
+  show_waybar_modules_menu
+}
+
 ##### JUDGE #####
 judge() {
   [ "$ROFI_DATA" ] && MENU=$ROFI_DATA || MENU="MAIN_MENU" # 如果设置了ROFI_DATA（由 echo -en "\0data\x1fDATA值\n" 来传递）则使用ROFI_DATA对应的MENU，若空即MAIN_MENU
@@ -86,6 +106,9 @@ judge() {
     for i in "${!useful_tools_items[@]}"; do
       [ "$*" = "${useful_tools_items[$i]}" ] && eval "${useful_tools_cmds[$i]}"
     done
+    ;;
+  WAYBAR_MODULES_MENU)
+    toggle_waybar_module "$*"
     ;;
   esac
 }
