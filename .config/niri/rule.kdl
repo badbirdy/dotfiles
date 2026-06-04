@@ -53,6 +53,10 @@ recent-windows {
 
 // --------- floating windows -----------
 window-rule {
+    match app-id="com.mitchellh.ghostty.floating"
+    open-floating true
+}
+window-rule {
     match app-id=r#"dolphin|org.pulseaudio.pavucontrol|ark|blueman-manager|nm-connection-editor|org.gnome.Nautilus"#
     match app-id=r#".prismlauncher."# title=r#".控制台窗口."#
     match app-id=r#".kdeconnect.daemon$"# title=r#"^sending.kde connect daemon$"#
@@ -147,7 +151,7 @@ window-rule {
 
 // --------- others -----------
 window-rule {
-    match app-id="com.mitchellh.ghostty" is-active=true
+    match app-id=r#"^com\.mitchellh\.ghostty(\.floating)?$"# is-active=true
     // match is-focused=true
     geometry-corner-radius 10
     clip-to-geometry true

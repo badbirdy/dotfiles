@@ -23,6 +23,7 @@ window {
     width:                       500px;
     border-radius:               20px;
     cursor:                      "default";
+    font:                        "Maple Mono 20";
     background-color:            @background;
 }
 
