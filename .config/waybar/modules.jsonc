@@ -36,7 +36,7 @@
     "max-length": 20
   },
   "custom/polycat": {
-    "exec": "/usr/bin/polycat -c ~/.config/waybar/polycat-config",
+    "exec": "/usr/bin/polycat",
     // "return-type": "json",
     "on-click": "mpv $HOME/.local/share/sounds/Meow.ogg.mp3",
     "format": "{text}",
@@ -135,16 +135,13 @@
     "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "on-click-right": "pavucontrol",
   },
-  "network": {
-    "interface": "wlp4s0",
-    "format": "{ifname}",
-    "format-disconnected": "",
-    "format-wifi": " ",
-    "format-alt": "  {essid}",
-    "tooltip-format": "{signalStrength}%",
-    "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ifname} : {ipaddr}",
-    "tooltip-format-ethernet": "{ifname} : {ipaddr} | Click to Open GUI",
-    "tooltip-format-disconnected": "Disconnected | Click to open GUI",
+  "custom/network": {
+    "exec": "${HOME}/.config/waybar/scripts/network-status.sh",
+    "return-type": "json",
+    "format": "{text}",
+    "interval": 5,
+    "tooltip": true,
+    "on-click": "${HOME}/.config/waybar/scripts/network-status.sh toggle",
     "on-click-right": "nm-connection-editor",
   },
   "custom/power": {
@@ -155,8 +152,8 @@
   "battery": {
     "interval": 30,
     "states": {
-      "warning": 20,
-      "critical": 10
+      "warning": 40,
+      "critical": 20
     },
     "format": "{icon} {capacity}%",
     "format-charging": "󰂄 {capacity}%",

@@ -12,14 +12,14 @@
     "niri/workspaces",
     "niri/window",
     "custom/polycat",
-    "custom/codex-usage",
+    //"custom/codex-usage",
     "group/tools"
   ],
   "modules-right": [
     "tray",
     "custom/weather",
     "pulseaudio",
-    "network",
+    "custom/network",
     "memory",
     "battery",
     "clock"
