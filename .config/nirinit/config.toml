@@ -1,0 +1,13 @@
+[skip]
+apps = [
+  "steam",
+  "firefox",
+  "linuxqq"
+]
+
+[launch]
+# Map Niri app_id values to commands that can launch them again.
+"SiYuan" = "siyuan"
+"com.mitchellh.ghostty" = "ghostty"
+"org.telegram.desktop" = "Telegram"
+"wechat" = "wechat-universal"
