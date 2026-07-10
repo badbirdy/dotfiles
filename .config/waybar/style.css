@@ -712,7 +712,6 @@
 }
 
 #custom-polycat {
-  font-size: 30px;
   margin-top: 5px;
   margin-left: 8px;
   margin-bottom: 5px;
@@ -724,6 +723,10 @@
   border-color: @pink;
   color: @flamingo;
   transition: 0.3s;
+}
+
+#custom-polycat label {
+  font-size: 28px;
 }
 
 #custom-polycat:hover {
