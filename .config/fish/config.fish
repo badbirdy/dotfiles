@@ -105,10 +105,11 @@ if status is-interactive
 
     abbr --add vi nvim
     abbr --add nv neovide
-    abbr --add ls "eza --icons=auto -git --group-directories-first"
+    abbr --add ls "eza --icons=auto --git --group-directories-first"
     abbr --add la "eza --icons=auto --git --group-directories-first -lha"
     abbr --add tm tmux
     abbr --add tmm "tmux new -A -s main"
+    abbr --add tma "tmux attach -t"
     abbr --add archwiki "xdg-open /usr/share/doc/arch-wiki-zh-cn/html/zh-cn/首页.html"
     abbr --add lg lazygit
     abbr --add ff fastfetch
@@ -158,3 +159,10 @@ bind \co accept-autosuggestion
 function ll --wraps=ls --description 'List contents of directory using long format'
     ls -lhg $argv
 end
+
+# pnpm
+set -gx PNPM_HOME "/home/bdbd/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
