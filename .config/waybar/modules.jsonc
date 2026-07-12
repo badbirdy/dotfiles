@@ -37,6 +37,7 @@
   },
   "custom/polycat": {
     "exec": "/usr/bin/polycat",
+    "tooltip": false,
     // "return-type": "json",
     "on-click": "mpv $HOME/.local/share/sounds/Meow.ogg.mp3",
     "format": "{text}",
@@ -312,12 +313,12 @@
   //   "tooltip": true
   // },
   "custom/codex-usage": {
-    "exec": "/usr/bin/codex-usage --waybar --format '{icon} {5h_pct}%-{7d_pct}%' --browser firefox",
+    "exec": "/usr/bin/codex-usage --waybar --format '{icon_plain} {5h_pct}%-{7d_pct}%' --browser firefox",
     "return-type": "json",
     "interval": 360,
     "format": "{}",
     "tooltip": true,
-    "on-click": "/usr/bin/codex-usage --waybar --format '{icon} {5h_pct}%-{7d_pct}%' --browser firefox",
+    "on-click": "/usr/bin/codex-usage --waybar --format '{icon_plain} {5h_pct}%-{7d_pct}%' --browser firefox",
     "signal": 9
   }
 }
