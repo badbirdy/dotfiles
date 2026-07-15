@@ -1,0 +1,7 @@
+[Unit]
+Description=HAPI Hub, Runner, and FRP Client
+Requires=hapi-hub.service hapi-runner.service frpc-hapi.service
+After=hapi-hub.service hapi-runner.service frpc-hapi.service
+
+[Install]
+WantedBy=default.target

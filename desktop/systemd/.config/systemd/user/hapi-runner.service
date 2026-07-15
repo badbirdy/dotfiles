@@ -1,0 +1,14 @@
+[Unit]
+Description=HAPI Runner
+After=hapi-hub.service network-online.target
+Wants=network-online.target
+Requires=hapi-hub.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/home/bdbd/.local/share/nvm/v22.22.0/bin/hapi runner start
+ExecStop=/home/bdbd/.local/share/nvm/v22.22.0/bin/hapi runner stop
+
+[Install]
+WantedBy=hapi-frp.target

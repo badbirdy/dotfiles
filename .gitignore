@@ -1,20 +1,13 @@
-# fish
-.config/fish/*
-!.config/fish/config.fish
+# Codex 注入的本地挂载
+/.codex
 
-# mako
-.config/mako/themes/*
+# 本地工具状态
+/.learnings/
+/.ruff_cache/
 
-# rofi
-.config/rofi/applets
-
-# nvim
-.config/nvim/lua/*
-!.config/nvim/lua/config
-!.config/nvim/lua/plugins
-
-# yazi
-.config/yazi/flavors/*
-.config/yazi/plugins/*
-/.config/nvim/lazy-lock.json
-/.config/nvim/lazyvim.json
+# 运行时缓存、日志和备份
+**/__pycache__/
+*.py[cod]
+*.bak
+*.bak[0-9]*
+/nvim.log
