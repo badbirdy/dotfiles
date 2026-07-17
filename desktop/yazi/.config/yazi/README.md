@@ -9,6 +9,3 @@ ya pkg add boydaihungst/mediainfo
 ya pkg add XYenon/clipboard
 # Flavor
 ya pkg add yazi-rs/flavors:catppuccin-mocha 
-
-# Optional preview dependencies
-- `drawio`: render `.drawio` files when no same-name PNG exists

@@ -39,6 +39,9 @@ open = [
 	{ run = 'start "" %s1',    desc = "Open", for = "windows", orphan = true },
 	{ run = "termux-open %s1", desc = "Open", for = "android" },
 ]
+drawio = [
+	{ run = "drawio %s1", desc = "draw.io", for = "linux", orphan = true },
+]
 reveal = [
 	{ run = "xdg-open %d1",         desc = "Reveal", for = "linux" },
 	{ run = "open -R %s1",          desc = "Reveal", for = "macos" },
@@ -78,6 +81,8 @@ download = [
 rules = [
 	# Folder
 	{ url = "*/", use = [ "edit", "open", "reveal" ] },
+	# Draw.io
+	{ url = "*.drawio", use = [ "drawio", "reveal" ] },
   # PDF
   { mime = "application/pdf", use = [ "pdf-open" ] },
 	# Text
@@ -159,8 +164,6 @@ preloaders = [
 	{ mime = "application/ms-opentype", run = "font" },
 ]
 previewers = [
-	# Draw.io
-	{ url = "*.drawio", run = "drawio" },
 	{ url = "*/", run = "piper -- eza -TL=2 --color=always --icons=always --group-directories-first --no-quotes \"$1\"" },
   { url = "*.md", run  = "piper -- CLICOLOR_FORCE=1 glow -s=dark \"$1\"" },
 	# Code

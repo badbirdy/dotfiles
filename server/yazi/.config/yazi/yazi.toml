@@ -159,8 +159,6 @@ preloaders = [
 	{ mime = "application/ms-opentype", run = "font" },
 ]
 previewers = [
-	# Draw.io
-	{ url = "*.drawio", run = "drawio" },
 	{ url = "*/", run = "piper -- eza -TL=2 --color=always --icons=always --group-directories-first --no-quotes \"$1\"" },
   { url = "*.md", run  = "piper -- CLICOLOR_FORCE=1 glow -s=dark \"$1\"" },
 	# Code
