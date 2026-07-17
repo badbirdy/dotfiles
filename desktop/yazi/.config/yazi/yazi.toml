@@ -78,33 +78,15 @@ download = [
 ]
 
 [open]
-rules = [
-	# Folder
-	{ url = "*/", use = [ "edit", "open", "reveal" ] },
+# 内置规则包含通配 fallback，自定义规则必须放在它之前。
+prepend_rules = [
 	# Draw.io
 	{ url = "*.drawio", use = [ "drawio", "reveal" ] },
   # PDF
   { mime = "application/pdf", use = [ "pdf-open" ] },
-	# Text
-	{ mime = "text/*", use = [ "edit", "reveal" ] },
-	# Image
-	{ mime = "image/*", use = [ "open", "reveal" ] },
-	# Media
-	{ mime = "{audio,video}/*", use = [ "play", "reveal" ] },
 	{ url = "*.{doc,docx,dot,dotx,rtf,odt,ott,wps}", use = [ "wps-word", "reveal" ] },
 	{ url = "*.{xls,xlsx,xlsm,xlsb,et,csv,ods,ots}", use = [ "wps-sheet", "reveal" ] },
 	{ url = "*.{ppt,pptx,pptm,pot,potx,dps,odp,otp}", use = [ "wps-slide", "reveal" ] },
-	# Archive
-	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [ "extract", "reveal" ] },
-	# JSON
-	{ mime = "application/{json,ndjson}", use = [ "edit", "reveal" ] },
-	{ mime = "*/javascript", use = [ "edit", "reveal" ] },
-	# Empty file
-	{ mime = "inode/empty", use = [ "edit", "reveal" ] },
-	# Virtual file system
-	{ mime = "vfs/{absent,stale}", use = "download" },
-	# Fallback
-	{ url = "*", use = [ "open", "reveal" ] },
 ]
 
 [tasks]
