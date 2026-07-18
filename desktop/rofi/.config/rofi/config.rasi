@@ -112,6 +112,9 @@ configuration {
   kb-row-up: "Control+k,Up";
   kb-row-down: "Control+j,Down";
   kb-accept-entry: "Return,KP_Enter";
+  // 剪贴板脚本用这两个动作区分删除当前项和清空历史。
+  kb-delete-entry: "Shift+Delete";
+  kb-custom-1: "Control+Shift+Delete";
   kb-remove-to-eol: "";
 	me-select-entry: "MousePrimary";
 	me-accept-entry: "MouseDPrimary";
