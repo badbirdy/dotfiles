@@ -84,9 +84,13 @@ prepend_rules = [
 	{ url = "*.drawio", use = [ "drawio", "reveal" ] },
   # PDF
   { mime = "application/pdf", use = [ "pdf-open" ] },
+  # WPS
 	{ url = "*.{doc,docx,dot,dotx,rtf,odt,ott,wps}", use = [ "wps-word", "reveal" ] },
 	{ url = "*.{xls,xlsx,xlsm,xlsb,et,csv,ods,ots}", use = [ "wps-sheet", "reveal" ] },
 	{ url = "*.{ppt,pptx,pptm,pot,potx,dps,odp,otp}", use = [ "wps-slide", "reveal" ] },
+  # html
+  { url = "*.html", use = [ "open", "edit" ] },
+  { url = "*.htm",  use = [ "open", "edit" ] },
 ]
 
 [tasks]
