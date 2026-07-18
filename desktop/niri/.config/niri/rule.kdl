@@ -108,6 +108,7 @@ window-rule {
 window-rule {
     match app-id=r#"firefox|neovide|code|SiYuan|clash-verge|org.telegram.desktop|org.kde.kdeconnect.app|^jetbrains|com.obsproject.Studio|google-chrome"#
     match app-id="obsidian"
+    match app-id="drawio"
     open-maximized true
 }
 
