@@ -31,11 +31,11 @@ jorgebucaran/autopair.fish
 
 打开交互式 Fish 时会执行 `fish_greeting`：
 
-- 读取 `~/.cache/fish_daily_quote.txt` 中缓存的每日一句。
-- 如果缓存不是今天，并且 `curl`、`jq` 可用，会从 ZenQuotes 拉取当天 quote。
-- 网络请求有短超时限制，避免终端启动被长时间卡住。
-- 显示本次 Fish 配置启动耗时，例如 `Fish startup: 120ms`。
-- 最后显示 `Hello bdbd!`。
+- 显示 `Welcome to <hostname>`，方便确认当前连接的服务器。
+- 使用蓝色标题、分隔线和状态行组成三行欢迎信息。
+- 显示 Linux 发行版和服务器 uptime，不显示用户名。
+- 在状态行显示本次 Fish 配置启动耗时，例如 `Fish 120ms`。
+- 欢迎信息只读取本机状态，不会在 shell 启动时发起网络请求。
 
 非交互式 Fish 会跳过交互相关初始化，避免影响脚本执行。
 
@@ -318,4 +318,3 @@ fish -n ~/.config/fish/config.fish
 - `Ctrl+R` 能打开 fzf history。
 - `cd <关键词>` 能使用 zoxide 跳转。
 - `nvm list` 正常工作。
-

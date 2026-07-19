@@ -1,11 +1,12 @@
-# Plugins
-ya pkg add yazi-rs/plugins:mount 
-ya pkg add KKV9/archive 
-ya pkg add atareao/convert 
-ya pkg add yazi-rs/plugins:chmod 
-ya pkg add Deepak22903/kdeconnect-send 
-ya pkg add yazi-rs/plugins:piper 
-ya pkg add boydaihungst/mediainfo 
-ya pkg add XYenon/clipboard
-# Flavor
-ya pkg add yazi-rs/flavors:catppuccin-mocha 
+# Packages
+
+Plugins and flavors are declared in `package.toml`. After deploying this
+Stow package, install them into the local Yazi config directory:
+
+```bash
+ya pkg install
+```
+
+Use `ya pkg add <package>` and `ya pkg upgrade` to update
+`package.toml`. The generated `plugins/` and `flavors/` directories are
+local runtime state and are not tracked in this repository.

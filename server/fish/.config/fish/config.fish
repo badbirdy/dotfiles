@@ -2,66 +2,50 @@
 set -g __fish_config_start_time (date +%s%3N)
 
 function fish_greeting
-    # 缓存文件存放位置
-    set -l cache_file ~/.cache/fish_daily_quote.txt
-    set -l today (date "+%Y-%m-%d")
-    set -l quote ""
-    set -l author ""
+    set -l host (hostname 2>/dev/null)
+    set -l distro "Unknown distro"
+    set -l uptime_text
 
-    # 先读取缓存，确保网络异常时也不会阻塞 shell 启动
-    if test -e $cache_file
-        set quote (sed -n '2p' $cache_file)
-        set author (sed -n '3p' $cache_file)
-    end
-
-    # 如果缓存文件不存在，或者缓存日期不是今天，就尝试重新获取
-    if type -q curl; and type -q jq
-        if not test -e $cache_file; or test (head -n1 $cache_file) != $today
-            # 拉取每日一言（ZenQuotes.io），限制超时避免终端卡在启动阶段
-            set -l json (curl -fsS --connect-timeout 2 --max-time 3 https://zenquotes.io/api/today 2>/dev/null)
-
-            if test $status -eq 0; and test -n "$json"
-                set -l new_quote (printf "%s" "$json" | jq -r '.[0].q // empty' 2>/dev/null)
-                set -l new_author (printf "%s" "$json" | jq -r '.[0].a // empty' 2>/dev/null)
-
-                if test -n "$new_quote"; and test -n "$new_author"
-                    mkdir -p (dirname $cache_file)
-                    echo $today >$cache_file
-                    printf "%s\n%s\n" "$new_quote" "$new_author" >>$cache_file
-                    set quote $new_quote
-                    set author $new_author
-                end
+    if test -r /etc/os-release
+        for distro_key in PRETTY_NAME NAME ID
+            set -l distro_line (string match -r "^$distro_key=.*" </etc/os-release)
+            if test -n "$distro_line"
+                set distro (string trim -c '"' -- (string replace "$distro_key=" '' -- $distro_line))
+                break
             end
         end
     end
 
-    if test -n "$quote"; and test -n "$author"
-        # 计算长度
-        set -l len_quote (string length -- $quote)
-        set -l len_author (string length -- $author)
+    if type -q uptime
+        set uptime_text (string trim -- (uptime -p 2>/dev/null))
+    end
 
-        set_color magenta
-        printf "┌\n"
-        set_color blue
-        printf "%*s%s\n" (math 2) "" "$quote"
-        set_color brblack
-        printf "%*s— %s\n" (math $len_quote - $len_author) "" "$author"
-        set_color magenta
-        printf "%*s┘\n" (math $len_quote + 3) ""
+    set -l title "Welcome to $host"
+    set -l divider_width (math (string length -- "$title") + 4)
+
+    set_color blue
+    printf "\n"
+    printf "  ◆ "
+    set_color brblue
+    printf "%s\n" "$title"
+
+    set_color blue
+    printf "  %s\n" (string repeat -n $divider_width -- "━")
+
+    set_color brblack
+    printf "  %s" "$distro"
+    if test -n "$uptime_text"
+        printf "  •  %s" "$uptime_text"
     end
 
     if set -q __fish_config_start_time
         set -l now (date +%s%3N)
         set -l elapsed (math $now - $__fish_config_start_time)
 
-        set_color brblack
-        echo "Fish startup: "$elapsed"ms"
-        set_color normal
+        printf "  •  Fish %sms" "$elapsed"
         set -e __fish_config_start_time
     end
-    echo ""
-    set_color blue
-    echo "Hello bdbd!"
+    printf "\n"
     set_color normal
 end
 
