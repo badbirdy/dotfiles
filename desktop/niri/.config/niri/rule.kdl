@@ -126,6 +126,23 @@ window-rule {
     // block-out-from "screencast"
 }
 
+// 醒目标记当前录屏窗口，避免共享错误内容
+window-rule {
+    match is-window-cast-target=true
+
+    border {
+        active-color "#D81E06"
+        inactive-color "#9b0000"
+    }
+    shadow {
+        color "#D81E0670"
+    }
+    tab-indicator {
+        active-color "#D81E06"
+        inactive-color "#9b0000"
+    }
+}
+
 // --------- windows on workspace -----------
 window-rule {
     match app-id=r#"firefox"#
@@ -151,6 +168,13 @@ window-rule {
 }
 
 // --------- others -----------
+window-rule {
+    match app-id=r#"^com\.mitchellh\.ghostty(\.floating)?$"#
+    background-effect {
+        blur true
+    }
+}
+
 window-rule {
     match app-id=r#"^com\.mitchellh\.ghostty(\.floating)?$"# is-active=true
     // match is-focused=true

@@ -114,6 +114,14 @@ overview {
 	zoom 0.5
 }
 
+// 轻度背景模糊，避免窗口后的内容过度糊化
+blur {
+    passes 2
+    offset 3
+    noise 0.02
+    saturation 1.4
+}
+
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Layout
